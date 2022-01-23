@@ -50,7 +50,7 @@ public class ClienteController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Integer id, @RequestBody Cliente clienteReq) {
+    public void atualizar(@PathVariable Integer id, @RequestBody @Valid Cliente clienteReq) {
         this.clienteService.buscarPorId(id)
         .map( cliente -> {
             clienteReq.setId(cliente.getId());
