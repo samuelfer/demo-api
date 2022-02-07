@@ -14,8 +14,10 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/clientes")
+@CrossOrigin("http://localhost:4200/")
 public class ClienteController {
 
+    private static String CLIENTE_NAO_ENCONTRADO = "Cliente não encontrado";
     private final ClienteService clienteService;
 
     @Autowired
@@ -34,7 +36,7 @@ public class ClienteController {
             Optional<Cliente> cliente = this.clienteService.buscarPorId(id);
 
             if (cliente.isEmpty()) {
-                throw new RuntimeException("Cliente não encontrado");
+                throw new RuntimeException(CLIENTE_NAO_ENCONTRADO);
             }
             return new ResponseEntity<Cliente>(cliente.get(), HttpStatus.OK);
         } catch (Exception e) {
@@ -55,16 +57,17 @@ public class ClienteController {
         .map( cliente -> {
             clienteReq.setId(cliente.getId());
             return this.clienteService.atualizar(clienteReq);
-        }).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        }).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, CLIENTE_NAO_ENCONTRADO));
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletar(@PathVariable Integer id) {
+        System.out.println("Cheguei");
         this.clienteService.buscarPorId(id)
                 .map( cliente -> {
                     this.clienteService.deletar(cliente);
                     return Void.TYPE;
-                }).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                }).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, CLIENTE_NAO_ENCONTRADO));
     }
 }
