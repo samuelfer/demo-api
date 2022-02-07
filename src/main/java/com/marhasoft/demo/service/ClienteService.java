@@ -2,6 +2,7 @@ package com.marhasoft.demo.service;
 
 import com.marhasoft.demo.model.Cliente;
 import com.marhasoft.demo.repository.ClienteRepository;
+import com.marhasoft.demo.util.TrataString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,7 @@ public class ClienteService {
     }
 
     public Cliente salvar(Cliente cliente) {
+        cliente.setCpf(TrataString.substituiCaracteres(cliente.getCpf()));
         return this.clienteRepository.save(cliente);
     }
 
@@ -36,6 +38,7 @@ public class ClienteService {
     }
 
     public Cliente atualizar(Cliente cliente) {
+        cliente.setCpf(TrataString.substituiCaracteres(cliente.getCpf()));
         return this.clienteRepository.save(cliente);
     }
 }
