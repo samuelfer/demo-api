@@ -63,7 +63,6 @@ public class ClienteController {
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletar(@PathVariable Integer id) {
-        System.out.println("Cheguei");
         this.clienteService.buscarPorId(id)
                 .map( cliente -> {
                     this.clienteService.deletar(cliente);
