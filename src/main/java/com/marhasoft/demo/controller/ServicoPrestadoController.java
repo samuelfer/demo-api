@@ -8,11 +8,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("/servicos-prestados")
-@CrossOrigin("http://localhost:4200")
 @RequiredArgsConstructor
 public class ServicoPrestadoController {
 
@@ -21,7 +21,7 @@ public class ServicoPrestadoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ServicoPrestado salvar(@RequestBody ServicoPrestadoDTO servicoPrestadoDto) {
+    public ServicoPrestado salvar(@RequestBody @Valid ServicoPrestadoDTO servicoPrestadoDto) {
         return servicoPrestadoService.salvar(servicoPrestadoDto);
     }
 
