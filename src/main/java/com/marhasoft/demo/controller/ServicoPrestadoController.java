@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/servicos-prestados")
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:4200")
 @RequiredArgsConstructor
 public class ServicoPrestadoController {
 
