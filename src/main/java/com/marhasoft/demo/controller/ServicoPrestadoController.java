@@ -2,7 +2,6 @@ package com.marhasoft.demo.controller;
 
 import com.marhasoft.demo.dto.ServicoPrestadoDTO;
 import com.marhasoft.demo.model.ServicoPrestado;
-import com.marhasoft.demo.service.ClienteService;
 import com.marhasoft.demo.service.ServicoPrestadoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ServicoPrestadoController {
 
-    private final ClienteService clienteService;
     private final ServicoPrestadoService servicoPrestadoService;
 
     @PostMapping
