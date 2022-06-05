@@ -14,10 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/clientes")
-<<<<<<< HEAD
 @CrossOrigin("http://localhost:4200/")
-=======
->>>>>>> 8b560a138af68f332d3323a6648ba384af82dfc3
 public class ClienteController {
 
     private static String CLIENTE_NAO_ENCONTRADO = "Cliente não encontrado";
